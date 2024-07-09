@@ -4,15 +4,15 @@ def caesar_cipher(text, key, mode):
     for char in text:
         # Encrypt uppercase characters
         if char.isupper():
-            if mode == 'e':
+            if mode == 'encrypt':
                 result += chr((ord(char) + key - 65) % 26 + 65)
-            elif mode == 'd':
+            elif mode == 'decrypt':
                 result += chr((ord(char) - key - 65) % 26 + 65)
         # Encrypt lowercase characters
         elif char.islower():
-            if mode == 'e':
+            if mode == 'encrypt':
                 result += chr((ord(char) + key - 97) % 26 + 97)
-            elif mode == 'd':
+            elif mode == 'decrypt':
                 result += chr((ord(char) - key - 97) % 26 + 97)
         else:
             # Non-alphabetic characters are added as is
@@ -34,11 +34,11 @@ def main():
 
     # Get the mode from the user
     while True:
-        mode = input("Do you want to encrypt or decrypt the text? (enter 'e' or 'd'): ").lower()
-        if mode in ['e', 'd']:
+        mode = input("Do you want to encrypt or decrypt the text? (enter 'encrypt' or 'decrypt'): ").lower()
+        if mode in ['encrypt', 'decrypt']:
             break
         else:
-            print("Please enter 'e' or 'd'.")
+            print("Please enter 'encrypt' or 'decrypt'.")
 
     # Perform the encryption or decryption
     result = caesar_cipher(text, key, mode)
